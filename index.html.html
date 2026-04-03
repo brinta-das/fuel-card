@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ডিজিটাল জ্বালানি কার্ড — বাংলাদেশ</title>
+
+<!-- Facebook / WhatsApp preview -->
+<meta property="og:url"         content="https://YOUR-USERNAME.github.io/fuel-card" />
+<meta property="og:type"        content="website" />
+<meta property="og:title"       content="⛽ ডিজিটাল জ্বালানি কার্ড — দুর্নীতি বন্ধ করুন" />
+<meta property="og:description" content="কাগজের কার্ড বাদ দিন। নম্বর প্লেট স্ক্যান করুন, কোটা চেক করুন, জালিয়াতি ধরুন — সব কিছু ২ সেকেন্ডে। বাংলাদেশের জন্য তৈরি ডিজিটাল সমাধান।" />
+<meta property="og:image"       content="https://og-image-service.vercel.app/api/og?title=%E0%A6%A1%E0%A6%BF%E0%A6%9C%E0%A6%BF%E0%A6%9F%E0%A6%BE%E0%A6%B2+%E0%A6%9C%E0%A7%8D%E0%A6%AC%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A6%BF+%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1&emoji=%E2%9B%BD" />
+<meta property="og:image:width"  content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale"      content="bn_BD" />
+
+<!-- Twitter / X preview -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="⛽ ডিজিটাল জ্বালানি কার্ড — দুর্নীতি বন্ধ করুন" />
+<meta name="twitter:description" content="কাগজের কার্ড বাদ দিন। নম্বর প্লেট স্ক্যান, কোটা চেক, জালিয়াতি ধরুন — ২ সেকেন্ডে।" />
+
+<!-- General SEO -->
+<meta name="description" content="বাংলাদেশের জ্বালানি বিতরণে দুর্নীতি বন্ধ করতে ডিজিটাল জ্বালানি কার্ড সিস্টেম। নম্বর প্লেট স্ক্যান করে কোটা ট্র্যাক করুন।" />
+<meta name="theme-color" content="#0f6b3d" />
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #0f6b3d;
+  --green2: #1a9456;
+  --green-light: #e6f4ed;
+  --red: #b92b1a;
+  --red-light: #fdf0ee;
+  --amber: #c07800;
+  --amber-light: #fef8e7;
+  --blue: #1a5fa8;
+  --blue-light: #e8f0fb;
+  --bg: #f0f2f0;
+  --white: #ffffff;
+  --border: #d8e2d8;
+  --text: #111e11;
+  --muted: #5a6e5a;
+  --light: #94a894;
+}
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Hero banner ── */
+.hero {
+  width: 100%;
+  background: var(--green);
+  padding: 28px 20px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -30px;
+  width: 220px; height: 220px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 50%;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.hero-flag {
+  font-size: 28px;
+  margin-bottom: 8px;
+  display: block;
+}
+.hero-title {
+  font-family: 'Tiro Bangla', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: white;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.hero-title span { color: #7de8b0; }
+.hero-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  max-width: 320px;
+  margin: 0 auto 18px;
+  line-height: 1.6;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+.hstat { text-align: center; }
+.hstat-num { font-size: 20px; font-weight: 700; color: #7de8b0; }
+.hstat-label { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+/* ── Tab switcher ── */
+.tabs-wrap {
+  width: 100%;
+  max-width: 480px;
+  padding: 16px 16px 0;
+}
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 6px;
+  background: var(--white);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 5px;
+}
+.tab {
+  padding: 9px 4px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  color: var(--muted);
+  border: none;
+  background: transparent;
+  font-family: 'Hind Siliguri', sans-serif;
+  line-height: 1.3;
+}
+.tab:hover { background: var(--bg); }
+.tab.active { color: white; }
+.tab.t-scan.active  { background: #1a5fa8; }
+.tab.t-ok.active    { background: var(--green); }
+.tab.t-flag.active  { background: #c0392b; }
+.tab.t-full.active  { background: var(--amber); }
+
+/* ── Phone frame ── */
+.phone-wrap {
+  width: 100%;
+  max-width: 480px;
+  padding: 12px 16px 20px;
+}
+.phone {
+  background: #1a1a1a;
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08);
+  position: relative;
+}
+.phone-notch {
+  width: 80px; height: 22px;
+  background: #1a1a1a;
+  border-radius: 0 0 14px 14px;
+  margin: 0 auto 8px;
+  position: relative;
+  z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px;
+}
+.notch-cam { width: 8px; height: 8px; background: #333; border-radius: 50%; }
+.notch-speaker { width: 40px; height: 4px; background: #333; border-radius: 2px; }
+.screen {
+  background: #f4f6f4;
+  border-radius: 28px;
+  overflow: hidden;
+  min-height: 560px;
+}
+
+/* ── App header inside phone ── */
+.app-header {
+  background: var(--green);
+  padding: 10px 14px 9px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ah-left { display: flex; align-items: center; gap: 8px; }
+.ah-icon {
+  width: 28px; height: 28px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.ah-title { font-size: 13px; font-weight: 700; color: white; }
+.ah-sub { font-size: 10px; color: rgba(255,255,255,0.7); }
+.ah-time { font-size: 10px; color: rgba(255,255,255,0.7); }
+.app-subbar {
+  background: #0d5230;
+  padding: 5px 14px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+  display: flex; justify-content: space-between;
+}
+
+/* ── Screen content ── */
+.screen-body { padding: 12px; }
+
+.scard {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.scard-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Status banners */
+.status-banner {
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.sb-ok    { background: var(--green-light); border: 1px solid #a8d8bc; }
+.sb-flag  { background: var(--red-light);   border: 1px solid #f0b0a8; }
+.sb-full  { background: var(--amber-light); border: 1px solid #f0d888; }
+.sb-scan  { background: var(--blue-light);  border: 1px solid #a8c4e8; }
+.sb-icon { font-size: 22px; flex-shrink: 0; }
+.sb-title { font-size: 13px; font-weight: 700; }
+.sb-title.ok   { color: var(--green); }
+.sb-title.flag { color: var(--red); }
+.sb-title.full { color: var(--amber); }
+.sb-title.scan { color: var(--blue); }
+.sb-sub { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+/* Info rows */
+.irow {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 7px 0;
+  border-bottom: 1px solid #f0f4f0;
+  font-size: 12px;
+}
+.irow:last-child { border-bottom: none; padding-bottom: 0; }
+.ik { color: var(--muted); }
+.iv { font-weight: 600; color: var(--text); text-align: right; }
+.iv.g { color: var(--green); }
+.iv.r { color: var(--red); }
+.iv.a { color: var(--amber); }
+
+/* Quota bar */
+.qbar-bg { background: #e0e8e0; border-radius: 3px; height: 6px; margin: 6px 0 3px; }
+.qbar-fill { height: 6px; border-radius: 3px; }
+.qbar-fill.low  { background: #2ecc71; }
+.qbar-fill.mid  { background: var(--amber); }
+.qbar-fill.high { background: var(--red); }
+
+/* Viewfinder */
+.viewfinder {
+  background: #111;
+  height: 140px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.vf-corner {
+  position: absolute;
+  width: 16px; height: 16px;
+  border-color: rgba(255,255,255,0.7);
+  border-style: solid;
+}
+.vf-corner.tl { top:10px; left:10px; border-width:2px 0 0 2px; }
+.vf-corner.tr { top:10px; right:10px; border-width:2px 2px 0 0; }
+.vf-corner.bl { bottom:10px; left:10px; border-width:0 0 2px 2px; }
+.vf-corner.br { bottom:10px; right:10px; border-width:0 2px 2px 0; }
+.vf-scan-line {
+  position: absolute;
+  width: 80%; height: 2px;
+  background: rgba(0,200,100,0.6);
+  border-radius: 1px;
+  animation: scan 2s ease-in-out infinite;
+}
+@keyframes scan { 0%,100%{top:20%} 50%{top:75%} }
+.plate-badge {
+  background: #f5c518;
+  border-radius: 5px;
+  padding: 5px 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 1.5px;
+  font-family: monospace;
+}
+.vf-hint { font-size: 11px; color: rgba(255,255,255,0.5); text-align: center; }
+
+/* Buttons */
+.abtn {
+  width: 100%;
+  padding: 11px;
+  border-radius: 8px;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  cursor: default;
+  margin-bottom: 6px;
+}
+.abtn.primary { background: var(--green); color: white; }
+.abtn.danger  { background: var(--red); color: white; }
+.abtn.outline-r { background: transparent; color: var(--red); border: 1.5px solid var(--red); }
+.abtn.disabled { background: #ddd; color: #999; }
+
+/* Fraud card */
+.fraud-inner {
+  background: var(--red-light);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #f0b0a8;
+}
+.fraud-inner-title { font-size: 11px; font-weight: 700; color: var(--red); margin-bottom: 6px; }
+.fraud-inner-row { font-size: 11px; color: #7b241c; padding: 2px 0; }
+
+/* Preset buttons */
+.preset-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 5px; margin-bottom: 8px; }
+.preset { padding: 7px 4px; background: #f4f6f4; border: 1px solid var(--border); border-radius: 6px; font-size: 11px; font-weight: 600; color: var(--muted); text-align: center; }
+.preset.sel { background: var(--green-light); border-color: #a8d8bc; color: var(--green); }
+
+/* ── Description strip ── */
+.desc-wrap {
+  width: 100%;
+  max-width: 480px;
+  padding: 0 16px 12px;
+}
+.desc-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.desc-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.desc-num.scan { background: var(--blue-light); color: var(--blue); }
+.desc-num.ok   { background: var(--green-light); color: var(--green); }
+.desc-num.flag { background: var(--red-light); color: var(--red); }
+.desc-num.full { background: var(--amber-light); color: var(--amber); }
+.desc-title { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.desc-body { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ── Footer CTA ── */
+.footer {
+  width: 100%;
+  max-width: 480px;
+  padding: 4px 16px 28px;
+}
+.footer-card {
+  background: var(--green);
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+.footer-title { font-family: 'Tiro Bangla', serif; font-size: 18px; margin-bottom: 6px; }
+.footer-sub { font-size: 12px; opacity: 0.8; line-height: 1.6; margin-bottom: 16px; }
+.footer-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.ftag {
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ── Slide transition ── */
+.screen-body { animation: fadein 0.3s ease; }
+@keyframes fadein { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── Pulse dot ── */
+.live-dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  background: #4ade80;
+  border-radius: 50%;
+  margin-right: 5px;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">🇧🇩 বাংলাদেশ উদ্যোগ</div>
+  <span class="hero-flag">⛽</span>
+  <div class="hero-title">ডিজিটাল <span>জ্বালানি কার্ড</span></div>
+  <div class="hero-sub">কাগজের কার্ড বাদ দিন। স্মার্টফোনে নম্বর প্লেট স্ক্যান করুন, দুর্নীতি বন্ধ করুন।</div>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num">২ সেকেন্ড</div><div class="hstat-label">প্রতিটি চেক</div></div>
+    <div class="hstat"><div class="hstat-num">১০০%</div><div class="hstat-label">ডিজিটাল লগ</div></div>
+    <div class="hstat"><div class="hstat-num">০ কাগজ</div><div class="hstat-label">দরকার নেই</div></div>
+  </div>
+</div>
+
+<!-- Tab switcher -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab t-scan active" onclick="showScreen('scan')">📷<br>স্ক্যানিং</button>
+    <button class="tab t-ok"   onclick="showScreen('ok')">✅<br>যোগ্য</button>
+    <button class="tab t-flag" onclick="showScreen('flag')">⚠️<br>সতর্কতা</button>
+    <button class="tab t-full" onclick="showScreen('full')">🚫<br>কোটা শেষ</button>
+  </div>
+</div>
+
+<!-- Phone -->
+<div class="phone-wrap">
+  <div class="phone">
+    <div class="phone-notch">
+      <div class="notch-cam"></div>
+      <div class="notch-speaker"></div>
+      <div class="notch-cam"></div>
+    </div>
+    <div class="screen">
+
+      <!-- App header (always visible) -->
+      <div class="app-header">
+        <div class="ah-left">
+          <div class="ah-icon">⛽</div>
+          <div>
+            <div class="ah-title">জ্বালানি কার্ড সিস্টেম</div>
+            <div class="ah-sub">মোটরসাইকেল — পাম্প অপারেটর</div>
+          </div>
+        </div>
+        <div class="ah-time"><span class="live-dot"></span>লাইভ</div>
+      </div>
+      <div class="app-subbar">
+        <span>অপারেটর: করিম হোসেন</span>
+        <span>মিরপুর বিপিসিএল</span>
+      </div>
+
+      <!-- Dynamic screen body -->
+      <div id="screen-body" class="screen-body"></div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Description card -->
+<div class="desc-wrap">
+  <div class="desc-card" id="desc-card"></div>
+</div>
+
+<!-- Footer CTA -->
+<div class="footer">
+  <div class="footer-card">
+    <div class="footer-title">এই সিস্টেম বাস্তবায়ন করতে চান?</div>
+    <div class="footer-sub">সম্পূর্ণ ডিজিটাল সমাধান — কাগজের কার্ড, দুর্নীতি ও অপচয় বন্ধ করুন</div>
+    <div class="footer-tags">
+      <span class="ftag">✓ অফলাইনে কাজ করে</span>
+      <span class="ftag">✓ বাংলা ইন্টারফেস</span>
+      <span class="ftag">✓ তাৎক্ষণিক জালিয়াতি সনাক্ত</span>
+      <span class="ftag">✓ সরকারি ড্যাশবোর্ড</span>
+    </div>
+  </div>
+</div>
+
+<script>
+const screens = {
+  scan: {
+    tab: 't-scan',
+    html: `
+      <div class="viewfinder">
+        <div class="vf-corner tl"></div><div class="vf-corner tr"></div>
+        <div class="vf-corner bl"></div><div class="vf-corner br"></div>
+        <div class="vf-scan-line"></div>
+        <div class="vf-hint">ক্যামেরা নম্বর প্লেটের দিকে ধরুন</div>
+      </div>
+      <div class="scard">
+        <div class="status-banner sb-scan">
+          <div class="sb-icon">📷</div>
+          <div>
+            <div class="sb-title scan">স্ক্যান করা হচ্ছে...</div>
+            <div class="sb-sub">অথবা নিচে প্লেট নম্বর টাইপ করুন</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:4px;">
+          <div style="flex:1;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;color:var(--light);">ঢাকা-গ ১১-১২৩৪</div>
+          <div style="padding:10px 14px;background:var(--green);color:white;border-radius:8px;font-size:13px;font-weight:700;">খুঁজুন</div>
+        </div>
+        <div style="margin-top:8px;padding:7px 10px;background:#fffbea;border:1px solid #f0d97a;border-radius:6px;font-size:11px;color:#7a5c00;">
+          💡 ইংরেজিতেও লিখতে পারেন: <b>dhaka ga 11 1234</b>
+        </div>
+      </div>
+      <div class="scard" style="background:#f9fbf9;">
+        <div class="scard-title">📋 আজকের লগ</div>
+        <div style="font-size:12px;color:var(--light);text-align:center;padding:8px 0;">এখনও কোনো লেনদেন নেই</div>
+      </div>`,
+    desc: {
+      icon: '📷', cls: 'scan', title: 'স্ক্যান স্ক্রিন',
+      body: 'অপারেটর ক্যামেরা দিয়ে নম্বর প্লেট স্ক্যান করেন, অথবা বাংলা/ইংরেজিতে টাইপ করেন। সিস্টেম স্বয়ংক্রিয়ভাবে কেন্দ্রীয় ডেটাবেস চেক করে।'
+    }
+  },
+
+  ok: {
+    tab: 't-ok',
+    html: `
+      <div class="viewfinder" style="height:90px;">
+        <div class="vf-corner tl"></div><div class="vf-corner tr"></div>
+        <div class="vf-corner bl"></div><div class="vf-corner br"></div>
+        <div class="plate-badge">ঢাকা-গ ১১-১২৩৪</div>
+      </div>
+      <div class="status-banner sb-ok">
+        <div class="sb-icon">✅</div>
+        <div>
+          <div class="sb-title ok">যোগ্য — ফিল করুন</div>
+          <div class="sb-sub">এই সপ্তাহে কোটা বাকি আছে</div>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-title">🏍️ যানবাহনের তথ্য</div>
+        <div class="irow"><span class="ik">নম্বর প্লেট</span><span class="iv">ঢাকা-গ ১১-১২৩৪</span></div>
+        <div class="irow"><span class="ik">সাপ্তাহিক কোটা</span><span class="iv">৫ লিটার</span></div>
+        <div class="irow"><span class="ik">ব্যবহৃত</span><span class="iv">১.৫ লিটার</span></div>
+        <div class="irow"><span class="ik">বাকি</span><span class="iv g">৩.৫ লিটার</span></div>
+        <div class="irow"><span class="ik">শেষ ফিল</span><span class="iv">২ দিন আগে</span></div>
+        <div style="margin-top:6px;">
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:4px;"><span>কোটা ব্যবহার</span><span>৩০% ব্যবহৃত</span></div>
+          <div class="qbar-bg"><div class="qbar-fill low" style="width:30%"></div></div>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-title">⛽ জ্বালানি দিন</div>
+        <div class="preset-row">
+          <div class="preset">২ লি.</div>
+          <div class="preset sel">৩ লি.</div>
+          <div class="preset">৪ লি.</div>
+          <div class="preset">৫ লি.</div>
+        </div>
+        <button class="abtn primary">নিশ্চিত করুন ও সংরক্ষণ করুন</button>
+      </div>`,
+    desc: {
+      icon: '✅', cls: 'ok', title: 'যোগ্য স্ক্রিন',
+      body: 'গাড়িটি কোটার মধ্যে আছে। অপারেটর লিটার বেছে নিয়ে পিন দিয়ে নিশ্চিত করেন। লেনদেন তাৎক্ষণিকভাবে সকল স্টেশনে আপডেট হয়।'
+    }
+  },
+
+  flag: {
+    tab: 't-flag',
+    html: `
+      <div class="viewfinder" style="height:90px;">
+        <div class="vf-corner tl"></div><div class="vf-corner tr"></div>
+        <div class="vf-corner bl"></div><div class="vf-corner br"></div>
+        <div class="plate-badge">ঢাকা-ক ৫৫-৭৭৮৯</div>
+      </div>
+      <div class="status-banner sb-flag">
+        <div class="sb-icon">⚠️</div>
+        <div>
+          <div class="sb-title flag">সতর্কতা — কাছে ফিল পাওয়া গেছে</div>
+          <div class="sb-sub">এই গাড়ি আজ অন্য পাম্পে তেল নিয়েছে</div>
+        </div>
+      </div>
+      <div class="fraud-inner">
+        <div class="fraud-inner-title">🚨 জালিয়াতির সংকেত</div>
+        <div class="fraud-inner-row">📍 আগের পাম্প: শ্যামলী পদ্মা পাম্প</div>
+        <div class="fraud-inner-row">🕐 সময়: আজ সকাল ০৯:১৫</div>
+        <div class="fraud-inner-row">⛽ পরিমাণ: ৩ লিটার</div>
+        <div class="fraud-inner-row">📏 দূরত্ব: মাত্র ৩.২ কিমি দূরে</div>
+      </div>
+      <div class="scard">
+        <div class="irow"><span class="ik">নম্বর প্লেট</span><span class="iv">ঢাকা-ক ৫৫-৭৭৮৯</span></div>
+        <div class="irow"><span class="ik">বাকি কোটা</span><span class="iv r">৩ লিটার</span></div>
+      </div>
+      <button class="abtn danger">🚫 ব্লক করুন ও লগ করুন</button>
+      <button class="abtn outline-r">সুপারভাইজার ওভাররাইড</button>`,
+    desc: {
+      icon: '⚠️', cls: 'flag', title: 'জালিয়াতি সতর্কতা স্ক্রিন',
+      body: 'সিস্টেম স্বয়ংক্রিয়ভাবে ধরে ফেলে যে গাড়িটি কাছের অন্য পাম্পে আগেই তেল নিয়েছে। অপারেটর ব্লক করতে পারেন, অথবা সুপারভাইজার পিন দিয়ে ওভাররাইড করতে পারেন — উভয়ই লগ হয়।'
+    }
+  },
+
+  full: {
+    tab: 't-full',
+    html: `
+      <div class="viewfinder" style="height:90px;">
+        <div class="vf-corner tl"></div><div class="vf-corner tr"></div>
+        <div class="vf-corner bl"></div><div class="vf-corner br"></div>
+        <div class="plate-badge">ঢাকা-খ ০৩-৪৫৬১</div>
+      </div>
+      <div class="status-banner sb-full">
+        <div class="sb-icon">🚫</div>
+        <div>
+          <div class="sb-title full">কোটা শেষ হয়েছে</div>
+          <div class="sb-sub">এই সপ্তাহের বরাদ্দ শেষ</div>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-title">🏍️ যানবাহনের তথ্য</div>
+        <div class="irow"><span class="ik">নম্বর প্লেট</span><span class="iv">ঢাকা-খ ০৩-৪৫৬১</span></div>
+        <div class="irow"><span class="ik">সাপ্তাহিক কোটা</span><span class="iv">৫ লিটার</span></div>
+        <div class="irow"><span class="ik">ব্যবহৃত</span><span class="iv r">৫ লিটার (১০০%)</span></div>
+        <div class="irow"><span class="ik">পরবর্তী রিসেট</span><span class="iv">রবিবার, ৭ এপ্রিল</span></div>
+        <div style="margin-top:6px;">
+          <div class="qbar-bg"><div class="qbar-fill high" style="width:100%"></div></div>
+          <div style="font-size:10px;color:var(--red);margin-top:3px;">এই সপ্তাহের সম্পূর্ণ কোটা ব্যবহৃত</div>
+        </div>
+      </div>
+      <button class="abtn disabled">জ্বালানি দেওয়া সম্ভব নয়</button>`,
+    desc: {
+      icon: '🚫', cls: 'full', title: 'কোটা শেষ স্ক্রিন',
+      body: 'সাপ্তাহিক বরাদ্দ শেষ হয়ে গেছে। বাটনটি নিজেই নিষ্ক্রিয় হয়ে যায় — অপারেটরের কোনো সিদ্ধান্ত নেওয়ার সুযোগ নেই। রবিবার রিসেট হয়।'
+    }
+  }
+};
+
+function showScreen(key) {
+  const s = screens[key];
+  // Update tabs
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.' + s.tab).classList.add('active');
+  // Update screen
+  const body = document.getElementById('screen-body');
+  body.innerHTML = s.html;
+  // Force re-animation
+  body.style.animation = 'none';
+  body.offsetHeight;
+  body.style.animation = '';
+  // Update desc
+  const d = s.desc;
+  document.getElementById('desc-card').innerHTML = `
+    <div class="desc-num ${d.cls}">${d.icon}</div>
+    <div>
+      <div class="desc-title">${d.title}</div>
+      <div class="desc-body">${d.body}</div>
+    </div>`;
+}
+
+showScreen('scan');
+</script>
+</body>
+</html>
